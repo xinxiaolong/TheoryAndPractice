@@ -7,6 +7,8 @@ package xinxiaolong.com.designmode;
 
 public class test {
 
+    
+    //功能1
    public static void main(String[] agr){
 
    }
