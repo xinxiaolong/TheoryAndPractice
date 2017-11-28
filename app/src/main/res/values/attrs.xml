@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <declare-styleable name="RatingBar" tools:ignore="ResourceName">
+        <!--尺寸值-->
+        <attr name="starImageSize" format="dimension"/>
+        <attr name="starCount" format="integer"/>
+        <!--资源文件值-->
+        <attr name="starEmpty" format="reference"/>
+         <!--资源文件值-->
+        <attr name="starFill" format="reference"/>
+        <!--资源文件值-->
+        <attr name="starHalf" format="reference"/>
+        <!--boolean值-->
+        <attr name="clickable" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="FlikerProgressBar">
+        <attr name="textSize" format="dimension"/>
+
+        <attr name="loadingColor" format="color"/>
+
+        <attr name="stopColor" format="color"/>
+
+        <attr name="radius" format="dimension"/>
+
+        <attr name="fborderWidth" format="dimension"/>
+
+    </declare-styleable>
+
+
+    <declare-styleable name="UnlockView">
+        <!-- 视图的Tint效果颜色-->
+        <attr name="tintColor" format="color" />
+        <!-- 视图的背景色-->
+        <attr name="backgroundColor" format="color" />
+        <!-- 小锁距离视图边界的距离-->
+        <attr name="space" format="dimension" />
+        <!-- 解锁触发阀值-->
+        <attr name="trigger" format="float" />
+        <!-- 动画时长 -->
+        <attr name="animationTimeDuration" format="integer" />
+        <!-- Tint效果动画时长-->
+        <attr name="tintAnimationDuration" format="integer" />
+        <!-- 是否使用Tint效果-->
+        <attr name="tint" format="boolean" />
+    </declare-styleable>
+
+</resources>

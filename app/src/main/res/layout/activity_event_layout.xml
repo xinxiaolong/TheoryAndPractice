@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.fragment.theoryandpractice.eventPractice.MineViewGroup
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/viewGroup"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="10dp"
+    android:background="#8EE5EE">
+     <com.example.fragment.theoryandpractice.eventPractice.ChildView
+         android:layout_width="fill_parent"
+         android:layout_height="200dp"
+         android:background="#32CD32"/>
+</com.example.fragment.theoryandpractice.eventPractice.MineViewGroup>

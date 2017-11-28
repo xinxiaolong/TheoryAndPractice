@@ -1,0 +1,252 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:hedgehogs="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/linear_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+
+            <com.example.fragment.theoryandpractice.widget.LoopViewPager
+                android:id="@+id/loopViewPager"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+            </com.example.fragment.theoryandpractice.widget.LoopViewPager>
+
+            <com.example.fragment.theoryandpractice.widget.EditTextDecimal
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:textColor="@color/color_c6" />
+
+            <com.example.fragment.theoryandpractice.stepviewPractice.HorizontalStepView
+                android:id="@+id/verticalStepView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </com.example.fragment.theoryandpractice.stepviewPractice.HorizontalStepView>
+
+            <com.example.fragment.theoryandpractice.widget.StepViewLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_margin="20dp"
+                android:background="@color/color_c12" />
+
+            <com.example.fragment.theoryandpractice.widget.ScrollerLayout
+                android:id="@+id/scrollerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/img_bitmpTest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </com.example.fragment.theoryandpractice.widget.ScrollerLayout>
+
+            <TextView
+                android:id="@+id/labelTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hello_world" />
+
+            <com.example.fragment.theoryandpractice.widget.MyLinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:background="#FFA54F"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <com.example.fragment.theoryandpractice.widget.MyButton
+                    android:id="@+id/myBtn1"
+                    android:layout_width="100dp"
+                    android:layout_height="fill_parent"
+                    android:background="#4F94CD" />
+
+            </com.example.fragment.theoryandpractice.widget.MyLinearLayout>
+
+            <com.example.fragment.theoryandpractice.widget.MyTextView
+                android:id="@+id/myBtn2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#FFC125"
+                android:text=""
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/to_eventTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="事件测试" />
+
+            <Button
+                android:id="@+id/to_measureAndLayoutTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="布局过程测试" />
+
+            <Button
+                android:id="@+id/to_threadTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="多线程测试" />
+
+            <Button
+                android:id="@+id/to_bitmapTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="图片测试" />
+
+
+            <Button
+                android:id="@+id/to_httpTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="http测试" />
+
+            <Button
+                android:id="@+id/to_takePhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="拍照测试" />
+
+
+            <Button
+                android:id="@+id/to_scroll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="滚动测试" />
+
+
+            <Button
+                android:id="@+id/to_LruCache"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="加载LruCache测试" />
+
+            <Button
+                android:id="@+id/to_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="service测试" />
+
+
+            <Button
+                android:id="@+id/btn_switchViewPosition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="调节按钮的显示位置" />
+
+
+            <Button
+                android:id="@+id/btn_fragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="fragment测试" />
+
+
+            <Button
+                android:id="@+id/btn_RecyclerView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RecyclerView测试" />
+
+            <Button
+                android:id="@+id/btn_coordinatorLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CoordinatorLayout测试" />
+
+
+            <com.example.fragment.theoryandpractice.widget.FlikerProgressBar
+                android:id="@+id/round_flikerbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:loadingColor="#40c4ff"
+                app:radius="20dp"
+                app:stopColor="#ff9800"
+                app:textSize="12sp" />
+
+
+            <com.example.fragment.theoryandpractice.widget.MyRatingBar
+                android:id="@+id/ratingbar"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="50dp"
+                hedgehogs:clickable="true"
+                hedgehogs:starCount="5"
+                hedgehogs:starEmpty="@drawable/gloomy_star"
+                hedgehogs:starFill="@drawable/hight_star"
+                hedgehogs:starImageSize="40dp"></com.example.fragment.theoryandpractice.widget.MyRatingBar>
+
+
+            <com.example.fragment.theoryandpractice.widget.FlowRadioGroupView
+                android:id="@+id/group"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_c22"
+                android:contentDescription="性别">
+
+            </com.example.fragment.theoryandpractice.widget.FlowRadioGroupView>
+
+
+            <com.example.fragment.theoryandpractice.widget.slide_unlock.UnlockView
+                android:id="@+id/uv_activity_main_1"
+                android:layout_width="260dp"
+                android:layout_height="40dp"
+                app:space="5dp"
+                app:tintColor="@color/green">
+
+                <com.example.fragment.theoryandpractice.widget.slide_unlock.TwinkleTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="滑动解锁"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_lock" />
+            </com.example.fragment.theoryandpractice.widget.slide_unlock.UnlockView>
+
+
+            <com.example.fragment.theoryandpractice.widget.slide_unlock.UnlockView
+                android:id="@+id/uv_activity_main_2"
+                android:layout_width="240dp"
+                android:layout_height="40dp"
+                app:space="5dp"
+                app:tintColor="#eeaa33">
+
+                <com.example.fragment.theoryandpractice.widget.slide_unlock.TwinkleTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="滑动解锁"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_lock" />
+            </com.example.fragment.theoryandpractice.widget.slide_unlock.UnlockView>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

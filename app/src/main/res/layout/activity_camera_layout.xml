@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <SurfaceView
+        android:id="@+id/surface_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/operation_bar" />
+
+    <ImageView
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/camera_back_icon" />
+
+    <LinearLayout
+        android:id="@+id/operation_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_c13"
+        android:orientation="vertical">
+
+        <it.sephiroth.android.library.widget.HListView
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:visibility="gone"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_c13">
+
+            <ImageView
+                android:id="@+id/choose_picture_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:padding="8dp"
+                android:src="@drawable/local" />
+
+            <ImageView
+                android:id="@+id/camera_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:padding="8dp"
+                android:src="@drawable/camara_icon" />
+
+            <ImageView
+                android:id="@+id/next_step_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="6dp"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/next_button_bg" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

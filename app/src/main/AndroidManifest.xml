@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.fragment.theoryandpractice"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        tools:replace="android:label"
+        android:name=".PracticeApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="学习与实践"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".httpPractice.httpActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".eventPractice.EventTestActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name=".bitmapPractice.GridView_LruCache"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name=".bitmapPractice.BitmapTestActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".measAndLayoutPractice.MeasureAndLayoutActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".IntentPractice.ActivityOne"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="myapp.action.test" />
+
+                <category android:name="myapp.action.category.test1" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name=".coordinatorLayoutPractice.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".IntentPractice.ActivityTwo"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="myapp.action.test" />
+
+                <category android:name="myapp.action.category.test1" />
+                <category android:name="myapp.action.category.test2" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".threadPractice.ThreadPracticeActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="myapp.action.test" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".takePhotoPractice.CameraActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="myapp.action.test" />
+
+                <category android:name="myapp.action.category.test1" />
+                <category android:name="myapp.action.category.test2" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="me.nereo.multi_image_selector.MultiImageSelectorActivity"
+            android:theme="@style/AppThemeFixCrash">
+            <intent-filter>
+                <action android:name="myapp.action.test" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".recyclerViewPractice.RecyclerViewActivity"
+            android:theme="@style/AppThemeFixCrash"></activity>
+
+        <activity
+            android:name=".fragmentPractice.MainFragmentActivity"
+            android:theme="@style/AppThemeFixCrash"></activity>
+
+        <activity
+            android:name=".notificationPractice.MainActivity"
+            android:theme="@style/AppThemeFixCrash"></activity>
+
+        <activity
+            android:name=".notificationPractice.TestActivity"
+            android:theme="@style/AppThemeFixCrash"></activity>
+        <!-- ********************* RecyclerView 相关**************** -->
+        <activity
+            android:name=".recyclerViewPractice.MainActivity"
+            android:theme="@style/AppThemeFixCrash"></activity>
+
+        <activity
+            android:name=".recyclerViewPractice.DetailActivity"
+            android:theme="@style/AppThemeFixCrash"></activity>
+
+        <activity
+            android:name=".recyclerViewPractice.SelectActivity"
+            android:theme="@style/AppThemeFixCrash"></activity>
+
+
+        <provider
+            android:name=".recyclerViewPractice.db.DataProvider"
+            android:authorities="com.frankzhu.recyclerviewdemo"
+            android:exported="false">
+            <grant-uri-permission android:pathPattern=".*" />
+        </provider>
+
+
+        <!--  注册一个service  -->
+        <service android:name=".threadPractice.TestService">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </service>
+
+        <service android:name=".threadPractice.UploadImageService">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </service>
+
+
+        <receiver android:name=".httpPractice.NetWorkStateBroadCastReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <!--  service的测试  -->
+        <service android:name=".servicePractice.MyService">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".servicePractice.ServicePracticeActivity"
+            android:theme="@style/AppThemeFixCrash"></activity>
+
+    </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+</manifest>

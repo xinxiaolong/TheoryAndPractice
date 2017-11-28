@@ -1,0 +1,11 @@
+include ':library',
+        ':lib_jvm',
+        ':lib_designMode',
+        ':app',
+        ':classloader',
+        ':ocr',
+        ':lib_algorithm',
+        'HListView',
+        'multi-image-selector',
+        ':servicedemo',
+        'lib_algorithm'
