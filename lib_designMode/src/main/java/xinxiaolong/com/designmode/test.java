@@ -7,5 +7,7 @@ package xinxiaolong.com.designmode;
 
 public class test {
 
+   public static void main(String[] agr){
 
+   }
 }
