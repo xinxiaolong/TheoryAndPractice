@@ -8,7 +8,7 @@ package xinxiaolong.com.designmode;
 public class test {
 
     
-    //功能1测试版本 hotFix
+    //功能1测试版本 hotFix 新建功能1
    public static void main(String[] agr){
 
    }
