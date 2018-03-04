@@ -1,4 +1,4 @@
-include ':library',
+include ':library', ':lib_dataStructure',
         ':lib_jvm',
         ':lib_designMode',
         ':app',
@@ -8,4 +8,5 @@ include ':library',
         'HListView',
         'multi-image-selector',
         ':servicedemo',
-        'lib_algorithm'
+        'lib_algorithm',
+        'lib_dataStructure'

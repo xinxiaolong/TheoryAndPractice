@@ -7,7 +7,8 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/classloader/classloader.iml" filepath="$PROJECT_DIR$/classloader/classloader.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib_algorithm/lib_algorithm.iml" filepath="$PROJECT_DIR$/lib_algorithm/lib_algorithm.iml" />
-      <module fileurl="file://$PROJECT_DIR$/lib_designMode/lib_designmode.iml" filepath="$PROJECT_DIR$/lib_designMode/lib_designmode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_dataStructure/lib_dataStructure.iml" filepath="$PROJECT_DIR$/lib_dataStructure/lib_dataStructure.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_designMode/lib_designMode.iml" filepath="$PROJECT_DIR$/lib_designMode/lib_designMode.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib_jvm/lib_jvm.iml" filepath="$PROJECT_DIR$/lib_jvm/lib_jvm.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
       <module fileurl="file://$PROJECT_DIR$/multi-image-selector/multi-image-selector.iml" filepath="$PROJECT_DIR$/multi-image-selector/multi-image-selector.iml" />
