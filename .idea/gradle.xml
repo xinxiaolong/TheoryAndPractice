@@ -20,6 +20,7 @@
             <option value="$PROJECT_DIR$/multi-image-selector" />
             <option value="$PROJECT_DIR$/ocr" />
             <option value="$PROJECT_DIR$/servicedemo" />
+            <option value="$PROJECT_DIR$/timetask" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

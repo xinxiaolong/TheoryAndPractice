@@ -6,7 +6,9 @@ import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -17,8 +19,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -62,7 +62,6 @@ import com.example.fragment.theoryandpractice.widget.MyButton;
 import com.example.fragment.theoryandpractice.widget.MyRatingBar;
 import com.example.fragment.theoryandpractice.widget.MyTextView;
 import com.example.fragment.theoryandpractice.widget.ScrollerLayout;
-import com.uuzuche.lib_zxing.activity.CaptureActivity;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -74,7 +73,9 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.inject.Inject;
 
@@ -268,6 +269,7 @@ public class MainActivity extends Activity {
         },1000);
     }
 
+
     private void screenShot(){
         View dView = getWindow().getDecorView();
         dView.setDrawingCacheEnabled(true);
@@ -460,8 +462,6 @@ public class MainActivity extends Activity {
                     downLoadThread.start();
                     break;
                 case R.id.btn_fragment:
-                    Intent intent = new Intent(MainActivity.this, CaptureActivity.class);
-                    startActivityForResult(intent, 100);
                     break;
                 case R.id.btn_RecyclerView:
                     startActivity(new Intent(context, com.example.fragment.theoryandpractice.recyclerViewPractice.MainActivity.class));

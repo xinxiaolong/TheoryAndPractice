@@ -93,6 +93,7 @@ public class MultiImageSelectorActivity extends FragmentActivity implements Mult
                 }
             }
         });
+
     }
 
     @Override

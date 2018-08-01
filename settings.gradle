@@ -1,4 +1,4 @@
-include ':library', ':lib_dataStructure',
+include ':library', ':lib_dataStructure', ':timetask',
         ':lib_jvm',
         ':lib_designMode',
         ':app',
