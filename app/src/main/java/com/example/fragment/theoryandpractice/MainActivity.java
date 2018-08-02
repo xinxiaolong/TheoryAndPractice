@@ -259,8 +259,6 @@ public class MainActivity extends Activity {
 
         Log.e("info",getDeviceInfo(this) );
 
-
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

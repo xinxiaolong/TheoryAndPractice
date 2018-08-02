@@ -7,23 +7,35 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
-import qktx.xinxiaolong.com.timetask.jobservice.JobSchedulerManager;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import qktx.xinxiaolong.com.timetask.alarm.AlarmJobManager;
+import qktx.xinxiaolong.com.timetask.jobservice.DaemonAlarmJobManager;
 
 public class MainActivity extends AppCompatActivity {
+
+
+    public static String TAG = "TIME_TASK";
+    private StringBuilder logStrBuilder = new StringBuilder();
+    private TimerServiceManager timerServiceManager;
 
     EditText edJobId;
     Button btnStart;
     Button btnStop;
     Button btnStopAll;
     Button btnPrint;
+    TextView tvLog;
 
-    JobSchedulerManager jobSchedulerManager;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -42,40 +54,42 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        edJobId=findViewById(R.id.edit_jobId);
-        btnStart=findViewById(R.id.btn_startService);
-        btnStop=findViewById(R.id.btn_stopService);
-        btnStopAll=findViewById(R.id.btn_stopAllService);
-        btnPrint=findViewById(R.id.btn_printAllService);
+        EventBus.getDefault().register(this);
+
+
+        edJobId = findViewById(R.id.edit_jobId);
+        btnStart = findViewById(R.id.btn_startService);
+        btnStop = findViewById(R.id.btn_stopService);
+        btnStopAll = findViewById(R.id.btn_stopAllService);
+        btnPrint = findViewById(R.id.btn_printAllService);
+        tvLog = findViewById(R.id.tv_log);
 
         btnStart.setOnClickListener(onClickListener);
         btnStop.setOnClickListener(onClickListener);
         btnStopAll.setOnClickListener(onClickListener);
         btnPrint.setOnClickListener(onClickListener);
 
-        jobSchedulerManager=new JobSchedulerManager(this);
+        timerServiceManager=TimerServiceManager.get(this);
+
     }
 
-
-    View.OnClickListener onClickListener=new View.OnClickListener() {
+    View.OnClickListener onClickListener = new View.OnClickListener() {
         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         @Override
         public void onClick(View v) {
 
-            int jobId=Integer.parseInt(edJobId.getText().toString());
-
-            switch (v.getId()){
+            switch (v.getId()) {
                 case R.id.btn_startService:
-                    jobSchedulerManager.startDataSyncJobScheduler(jobId);
+                    timerServiceManager.startTimerService(15000);
                     break;
                 case R.id.btn_stopService:
-                    jobSchedulerManager.stopDataSyncJobScheduler(jobId);
+                    timerServiceManager.stopTimeService();
                     break;
                 case R.id.btn_stopAllService:
-                    jobSchedulerManager.stopAllDataSyncJobScheduler();
+                    timerServiceManager.stopTimeService();
                     break;
                 case R.id.btn_printAllService:
-                    jobSchedulerManager.printAllPendingJobs();
+
                     break;
             }
         }
@@ -102,5 +116,19 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void messageEventBus(String event) {
+        logStrBuilder.append(event + "\n");
+        tvLog.setText(logStrBuilder.toString());
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.v(TAG, "onDestroy");
     }
 }

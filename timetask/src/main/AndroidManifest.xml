@@ -3,8 +3,8 @@
     package="qktx.xinxiaolong.com.timetask">
 
 
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
 
 
     <application
@@ -25,9 +25,26 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".jobservice.DataSyncJobService"
-            android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service
+            android:name=".jobservice.DaemonAlarmJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
 
+        <service
+            android:name=".alarm.AlarmService"
+            android:exported="true"></service>
+
+        <service
+            android:name=".alarm.AlarmService"
+            android:exported="true"></service>
+
+        <receiver
+            android:name=".alarm.AlarmJobBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="qktx.xinxiaolong.com.timetask.alarm.AlarmJobBroadcastReceiver" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

@@ -28,45 +28,54 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        app:srcCompat="@android:drawable/ic_dialog_email" />
 
     <EditText
         android:id="@+id/edit_jobId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp" />
 
     <Button
-        android:layout_below="@+id/edit_jobId"
         android:id="@+id/btn_startService"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="开始服务"
-       />
+        android:layout_below="@+id/edit_jobId"
+        android:text="开始服务" />
 
     <Button
-        android:layout_below="@+id/btn_startService"
         android:id="@+id/btn_stopService"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="停止服务"
-        />
+        android:layout_below="@+id/btn_startService"
+        android:text="停止服务" />
 
     <Button
-        android:layout_below="@+id/btn_stopService"
         android:id="@+id/btn_stopAllService"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="停止所有服务"
-        />
+        android:layout_below="@+id/btn_stopService"
+        android:text="停止所有服务" />
 
     <Button
-        android:layout_below="@+id/btn_stopAllService"
         android:id="@+id/btn_printAllService"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="打印所用服务"
-        />
+        android:layout_below="@+id/btn_stopAllService"
+        android:text="打印所用服务" />
 
+    <ScrollView
+        android:layout_below="@+id/btn_printAllService"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_log"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:text="" />
+
+    </ScrollView>
 </RelativeLayout>
