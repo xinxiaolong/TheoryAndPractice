@@ -13,12 +13,14 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/classloader" />
             <option value="$PROJECT_DIR$/lib_algorithm" />
+            <option value="$PROJECT_DIR$/lib_dataStructure" />
             <option value="$PROJECT_DIR$/lib_designMode" />
             <option value="$PROJECT_DIR$/lib_jvm" />
             <option value="$PROJECT_DIR$/library" />
             <option value="$PROJECT_DIR$/multi-image-selector" />
             <option value="$PROJECT_DIR$/ocr" />
             <option value="$PROJECT_DIR$/servicedemo" />
+            <option value="$PROJECT_DIR$/timetask" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

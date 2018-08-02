@@ -88,6 +88,10 @@ public class ArrayListTest {
 //        }
 
         System.out.println(getClass(t).toString());
+
+
+        List<String> list=new ArrayList<>();
+        list.iterator();
     }
 
     private static Class getClass(Type t) {

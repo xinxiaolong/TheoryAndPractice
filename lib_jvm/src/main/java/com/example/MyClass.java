@@ -20,11 +20,8 @@ public class MyClass {
         int num8=400;
         System.out.println(num7==num8);
 
-
         Integer num9=0;
         System.out.println(num3==num4+num9);
-
-
 
         String str1 = "str";
         String str2 = "ing";

@@ -1,10 +1,14 @@
 package com.example.fragment.theoryandpractice;
 
+import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -12,10 +16,10 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -39,7 +43,6 @@ import com.example.fragment.theoryandpractice.bitmapPractice.GridView_LruCache;
 import com.example.fragment.theoryandpractice.daggerPractice.AppComponent;
 import com.example.fragment.theoryandpractice.daggerPractice.AppleDrink;
 import com.example.fragment.theoryandpractice.daggerPractice.Bottle;
-import com.example.fragment.theoryandpractice.daggerPractice.DaggerAppComponent;
 import com.example.fragment.theoryandpractice.daggerPractice.DrinkModule;
 import com.example.fragment.theoryandpractice.eventPractice.EventTestActivity;
 import com.example.fragment.theoryandpractice.glidePractice.RequestManagerFragment;
@@ -59,12 +62,20 @@ import com.example.fragment.theoryandpractice.widget.MyButton;
 import com.example.fragment.theoryandpractice.widget.MyRatingBar;
 import com.example.fragment.theoryandpractice.widget.MyTextView;
 import com.example.fragment.theoryandpractice.widget.ScrollerLayout;
-import com.uuzuche.lib_zxing.activity.CaptureActivity;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.inject.Inject;
 
@@ -97,6 +108,10 @@ import cn.qqtheme.framework.util.ConvertUtils;
  */
 
 public class MainActivity extends Activity {
+
+
+    public static final String TAG=MainActivity.class.getName();
+
 
     @InjectView(R.id.scrollerLayout)
      ScrollerLayout scrollerLayout;
@@ -217,10 +232,10 @@ public class MainActivity extends Activity {
         transaction.add(requestManagerFragment, "123").commit();
 
 
-        AppComponent appComponent = DaggerAppComponent.builder().drinkModule(new DrinkModule(this)).build();
-        appComponent.inject(this);
-        appleDrink.print();
-        bottle.print();
+//        AppComponent appComponent = DaggerAppComponent.builder().drinkModule(new DrinkModule(this)).build();
+//        appComponent.inject(this);
+//        appleDrink.print();
+//        bottle.print();
 
         loopViewPager.setPagerAdapterData(pics);
 
@@ -240,11 +255,43 @@ public class MainActivity extends Activity {
 
             }
         });
+
+
+        Log.e("info",getDeviceInfo(this) );
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                screenShot();
+            }
+        },1000);
     }
 
 
-    public void onYearMonthDayPicker() {
+    private void screenShot(){
+        View dView = getWindow().getDecorView();
+        dView.setDrawingCacheEnabled(true);
+        dView.buildDrawingCache();
+        Bitmap bitmap = Bitmap.createBitmap(dView.getDrawingCache());
+        if (bitmap != null) {
+            try {
+                // 获取内置SD卡路径
+                String sdCardPath = Environment.getExternalStorageDirectory().getPath();
+                // 图片文件路径
+                String filePath = sdCardPath + File.separator + "screenshot.png";
+                File file = new File(filePath);
+                FileOutputStream os = new FileOutputStream(file);
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, os);
+                os.flush();
+                os.close();
+                Log.e(TAG,"保存成功");
+            } catch (Exception e) {
+                Log.e(TAG,"保存失败"+e.getMessage());
+            }
+        }
+    }
 
+    public void onYearMonthDayPicker() {
 
         Calendar calendar=Calendar.getInstance();
         int year=calendar.get(Calendar.YEAR);
@@ -413,8 +460,6 @@ public class MainActivity extends Activity {
                     downLoadThread.start();
                     break;
                 case R.id.btn_fragment:
-                    Intent intent = new Intent(MainActivity.this, CaptureActivity.class);
-                    startActivityForResult(intent, 100);
                     break;
                 case R.id.btn_RecyclerView:
                     startActivity(new Intent(context, com.example.fragment.theoryandpractice.recyclerViewPractice.MainActivity.class));
@@ -573,6 +618,87 @@ public class MainActivity extends Activity {
     public <Y extends Object> Y into(Y target) {
 
 
+        return null;
+    }
+
+
+
+    public static boolean checkPermission(Context context, String permission) {
+        boolean result = false;
+        if (Build.VERSION.SDK_INT >= 23) {
+            try {
+                Class<?> clazz = Class.forName("android.content.Context");
+                Method method = clazz.getMethod("checkSelfPermission", String.class);
+                int rest = (Integer) method.invoke(context, permission);
+                if (rest == PackageManager.PERMISSION_GRANTED) {
+                    result = true;
+                } else {
+                    result = false;
+                }
+            } catch (Exception e) {
+                result = false;
+            }
+        } else {
+            PackageManager pm = context.getPackageManager();
+            if (pm.checkPermission(permission, context.getPackageName()) == PackageManager.PERMISSION_GRANTED) {
+                result = true;
+            }
+        }
+        return result;
+    }
+
+    public static String getDeviceInfo(Context context) {
+        try {
+            org.json.JSONObject json = new org.json.JSONObject();
+            android.telephony.TelephonyManager tm = (android.telephony.TelephonyManager) context
+                    .getSystemService(Context.TELEPHONY_SERVICE);
+            String device_id = null;
+            if (checkPermission(context, Manifest.permission.READ_PHONE_STATE)) {
+                device_id = tm.getDeviceId();
+            }
+            String mac = null;
+            FileReader fstream = null;
+            try {
+                fstream = new FileReader("/sys/class/net/wlan0/address");
+            } catch (FileNotFoundException e) {
+                fstream = new FileReader("/sys/class/net/eth0/address");
+            }
+            BufferedReader in = null;
+            if (fstream != null) {
+                try {
+                    in = new BufferedReader(fstream, 1024);
+                    mac = in.readLine();
+                } catch (IOException e) {
+                } finally {
+                    if (fstream != null) {
+                        try {
+                            fstream.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if (in != null) {
+                        try {
+                            in.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+            json.put("mac", mac);
+            if (TextUtils.isEmpty(device_id)) {
+                device_id = mac;
+            }
+            if (TextUtils.isEmpty(device_id)) {
+                device_id = android.provider.Settings.Secure.getString(context.getContentResolver(),
+                        android.provider.Settings.Secure.ANDROID_ID);
+            }
+            json.put("device_id", device_id);
+            return json.toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return null;
     }
 }
