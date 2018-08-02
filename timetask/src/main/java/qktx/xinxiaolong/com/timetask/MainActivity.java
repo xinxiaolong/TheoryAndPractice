@@ -80,7 +80,11 @@ public class MainActivity extends AppCompatActivity {
 
             switch (v.getId()) {
                 case R.id.btn_startService:
-                    timerServiceManager.startTimerService(15000);
+                    //timerServiceManager.startTimerService(15000);
+                    DaemonAlarmJobManager.get(getApplication()).startDataSyncJobScheduler(1);
+                    DaemonAlarmJobManager.get(getApplication()).startDataSyncJobScheduler(2);
+                    DaemonAlarmJobManager.get(getApplication()).startDataSyncJobScheduler(3);
+                    DaemonAlarmJobManager.get(getApplication()).startDataSyncJobScheduler(4);
                     break;
                 case R.id.btn_stopService:
                     timerServiceManager.stopTimeService();

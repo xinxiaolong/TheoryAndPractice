@@ -28,16 +28,18 @@ public class DaemonAlarmJobService extends JobService {
     public void onCreate() {
         super.onCreate();
         alarmJobManager=AlarmJobManager.get(this);
-        Log.d(TAG,"DaemonAlarmJobService：   onCreate()");
+        Log.e(TAG,"DaemonAlarmJobService：   onCreate()------"+this);
     }
 
     @Override
     public boolean onStartJob(JobParameters params) {
+
+        int jobId=params.getJobId();
         if(alarmJobManager.isStarted()){
-            Log.e(TAG,"DaemonAlarmJobService：   闹钟已开启");
+            Log.e(TAG,"DaemonAlarmJobService：   闹钟已开启    jobId="+jobId);
             EventBus.getDefault().post("DataSyncJobService：   闹钟已开启");
         }else {
-            Log.e(TAG,"DaemonAlarmJobService：   闹钟未开启，尝试打开");
+            Log.e(TAG,"DaemonAlarmJobService：   闹钟未开启，尝试打开   jobId="+jobId);
             EventBus.getDefault().post("DataSyncJobService：   闹钟未开启，尝试打开");
             alarmJobManager.setAlarmId(System.currentTimeMillis());
             alarmJobManager.startAlarm();
@@ -57,7 +59,7 @@ public class DaemonAlarmJobService extends JobService {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.d(TAG,"DaemonAlarmJobService：   onDestroy()");
+        Log.e(TAG,"DaemonAlarmJobService：   onDestroy()------"+this);
 
     }
 }
