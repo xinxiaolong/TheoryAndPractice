@@ -6,7 +6,8 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import org.greenrobot.eventbus.EventBus;
+import qktx.xinxiaolong.com.timetask.manager.UploadBehaviorDataExecute;
+import qktx.xinxiaolong.com.timetask.step.StepCountManager;
 
 /**
  * Created by xiaolong on 2018/8/1.
@@ -15,8 +16,11 @@ import org.greenrobot.eventbus.EventBus;
 
 public class AlarmService extends Service{
 
-    public static String TAG="TIME_TASK";
-    AlarmJobManager alarmJobManager;
+    private static String TAG="TIME_TASK";
+    private AlarmJobManager alarmJobManager;
+    private UploadBehaviorDataExecute uploadExecute;
+
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -26,25 +30,29 @@ public class AlarmService extends Service{
     @Override
     public void onCreate() {
         super.onCreate();
+
         alarmJobManager=AlarmJobManager.get(this);
+        uploadExecute=new UploadBehaviorDataExecute(this);
+
+        //唤醒计步服务
+        StepCountManager.evokeStepCountStrategy(this);
+        //启动定时日志上传功能
+        uploadExecute.startUp();
+
         Log.e(TAG,"AlarmService:  onCreate()");
-        EventBus.getDefault().post("AlarmService:  onCreate()");
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-
         Log.e(TAG,"AlarmService:onStartCommand()   startId="+startId);
-        alarmJobManager.startAlarm();
-        EventBus.getDefault().post("AlarmService:  onStartCommand()   startId="+startId);
         return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
     public void onDestroy() {
-
-        Log.e(TAG,"onDestroy()");
-        EventBus.getDefault().post("AlarmService:    onDestroy()");
+        Log.e(TAG,"destroy()");
+        alarmJobManager.startAlarm();
         super.onDestroy();
     }
+
 }

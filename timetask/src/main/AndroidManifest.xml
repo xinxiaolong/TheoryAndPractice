@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
 
     <application
@@ -20,7 +21,6 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -28,15 +28,12 @@
         <service
             android:name=".jobservice.DaemonAlarmJobService"
             android:permission="android.permission.BIND_JOB_SERVICE" />
-
         <service
             android:name=".alarm.AlarmService"
             android:exported="true"></service>
-
         <service
-            android:name=".alarm.AlarmService"
+            android:name=".step.StepService"
             android:exported="true"></service>
-
         <receiver
             android:name=".alarm.AlarmJobBroadcastReceiver"
             android:enabled="true"
@@ -45,6 +42,7 @@
                 <action android:name="qktx.xinxiaolong.com.timetask.alarm.AlarmJobBroadcastReceiver" />
             </intent-filter>
         </receiver>
+
     </application>
 
 </manifest>

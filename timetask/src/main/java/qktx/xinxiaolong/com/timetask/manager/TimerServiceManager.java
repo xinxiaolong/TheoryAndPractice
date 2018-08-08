@@ -1,4 +1,4 @@
-package qktx.xinxiaolong.com.timetask;
+package qktx.xinxiaolong.com.timetask.manager;
 
 import android.content.Context;
 import android.os.Build;
@@ -15,8 +15,10 @@ public class TimerServiceManager {
 
     private Context mContext;
     public static volatile TimerServiceManager timerService;
+
     private AlarmJobManager alarmJobManager;
     private DaemonAlarmJobManager jobSchedulerManager;
+
     private TimerServiceManager() {
 
     }

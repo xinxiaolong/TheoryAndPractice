@@ -11,8 +11,6 @@ import android.net.Uri;
 import android.os.SystemClock;
 import android.util.Log;
 
-import org.greenrobot.eventbus.EventBus;
-
 import java.io.Serializable;
 
 import static android.content.Context.ALARM_SERVICE;
@@ -29,6 +27,7 @@ public class AlarmJobManager implements Serializable{
 
     private Context mContext;
     private static AlarmJobManager alarmJobManager;
+    //默认闹钟执行时间，测试时写为10秒
     private long delayTime=1000*10;
     private long alarmId=System.currentTimeMillis();
 
@@ -58,7 +57,6 @@ public class AlarmJobManager implements Serializable{
     }
 
     public void startAlarm() {
-
         if(mContext==null){
             return;
         }
@@ -69,9 +67,7 @@ public class AlarmJobManager implements Serializable{
         am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime()+triggerAtTime, pi);
 
         Log.v(TAG,"AlarmJobManager:   启动了闹钟");
-        EventBus.getDefault().post("AlarmJobManager  启动了闹钟");
     }
-
 
     public void cancelAlarm(){
 
@@ -80,15 +76,16 @@ public class AlarmJobManager implements Serializable{
 
         if(pi==null){
             Log.v(TAG,"尝试取消的闹钟找不到");
-            EventBus.getDefault().post("尝试取消的闹钟找不到");
         }else {
             am.cancel(pi);
             Log.v(TAG,"尝试取消闹钟");
-            EventBus.getDefault().post("尝试取消闹钟");
         }
     }
 
-
+    /**
+     * 判断闹钟是否已经运行
+     * @return
+     */
     public boolean isStarted(){
         PendingIntent pendingIntent=PendingIntent.getBroadcast(mContext, 0,getIntent(), PendingIntent.FLAG_NO_CREATE);
         boolean alarmUp= pendingIntent!= null;

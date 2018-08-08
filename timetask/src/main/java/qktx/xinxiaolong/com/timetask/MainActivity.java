@@ -15,12 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
-import qktx.xinxiaolong.com.timetask.alarm.AlarmJobManager;
-import qktx.xinxiaolong.com.timetask.jobservice.DaemonAlarmJobManager;
+import qktx.xinxiaolong.com.timetask.manager.TimerServiceManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,9 +48,6 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
-        EventBus.getDefault().register(this);
-
 
         edJobId = findViewById(R.id.edit_jobId);
         btnStart = findViewById(R.id.btn_startService);
@@ -118,17 +110,9 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void messageEventBus(String event) {
-        logStrBuilder.append(event + "\n");
-        tvLog.setText(logStrBuilder.toString());
-    }
-
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.v(TAG, "onDestroy");
+        Log.v(TAG, "destroy");
     }
 }

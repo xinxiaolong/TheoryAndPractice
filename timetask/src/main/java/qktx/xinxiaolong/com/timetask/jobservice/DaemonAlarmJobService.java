@@ -8,8 +8,6 @@ import android.os.Message;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
 
-import org.greenrobot.eventbus.EventBus;
-
 import qktx.xinxiaolong.com.timetask.alarm.AlarmJobManager;
 
 /**
@@ -35,10 +33,8 @@ public class DaemonAlarmJobService extends JobService {
     public boolean onStartJob(JobParameters params) {
         if(alarmJobManager.isStarted()){
             Log.e(TAG,"DaemonAlarmJobService：   闹钟已开启");
-            EventBus.getDefault().post("DataSyncJobService：   闹钟已开启");
         }else {
             Log.e(TAG,"DaemonAlarmJobService：   闹钟未开启，尝试打开");
-            EventBus.getDefault().post("DataSyncJobService：   闹钟未开启，尝试打开");
             alarmJobManager.setAlarmId(System.currentTimeMillis());
             alarmJobManager.startAlarm();
         }
@@ -49,7 +45,6 @@ public class DaemonAlarmJobService extends JobService {
     @Override
     public boolean onStopJob(JobParameters params) {
         Log.v(TAG,"DaemonAlarmJobService ：  onStopJob()");
-        EventBus.getDefault().post("DaemonAlarmJobService:  onStopJob()");
         alarmJobManager.cancelAlarm();
         return false;
     }
@@ -57,7 +52,7 @@ public class DaemonAlarmJobService extends JobService {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.d(TAG,"DaemonAlarmJobService：   onDestroy()");
+        Log.d(TAG,"DaemonAlarmJobService：   destroy()");
 
     }
 }
